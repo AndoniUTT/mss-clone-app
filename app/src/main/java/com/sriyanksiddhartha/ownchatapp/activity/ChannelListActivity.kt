@@ -18,13 +18,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
-import com.sriyanksiddhartha.ownchatapp.LoginActivity
 import com.sriyanksiddhartha.ownchatapp.viewmodel.ChannelListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.chat.android.client.models.Filters
 import io.getstream.chat.android.compose.ui.channels.ChannelsScreen
 import io.getstream.chat.android.compose.ui.theme.ChatTheme
-import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class ChannelListActivity : ComponentActivity() {

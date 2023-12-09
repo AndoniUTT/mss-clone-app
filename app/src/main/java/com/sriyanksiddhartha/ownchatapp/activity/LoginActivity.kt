@@ -1,4 +1,4 @@
-package com.sriyanksiddhartha.ownchatapp
+package com.sriyanksiddhartha.ownchatapp.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import com.sriyanksiddhartha.ownchatapp.activity.ChannelListActivity
+import com.sriyanksiddhartha.ownchatapp.R
 import com.sriyanksiddhartha.ownchatapp.ui.theme.OwnChatAppTheme
 import com.sriyanksiddhartha.ownchatapp.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
