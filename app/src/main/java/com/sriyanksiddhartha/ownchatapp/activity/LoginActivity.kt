@@ -51,7 +51,6 @@ class LoginActivity : ComponentActivity() {
         var showProgress: Boolean by remember {
             mutableStateOf(false)
         }
-
         viewModel.loadingState.observe(this, Observer { uiLoadingState ->
             showProgress = when (uiLoadingState) {
                 is LoginViewModel.UiLoadingState.Loading -> {
@@ -74,11 +73,8 @@ class LoginActivity : ComponentActivity() {
                 logo, usernameTextField, btnLoginAsUser,
                 btnLoginAsGuest, progressBar
             ) = createRefs()
-
             Image(
-                painter = painterResource(id = R.drawable.chat_logo),
-                contentDescription = "Logo",
-                modifier = Modifier
+                painter = painterResource(id = R.drawable.chat_logo), contentDescription = "Logo",  modifier = Modifier
                     .height(120.dp)
                     .width(120.dp)
                     .constrainAs(logo) {
@@ -87,10 +83,8 @@ class LoginActivity : ComponentActivity() {
                         top.linkTo(parent.top, margin = 100.dp)
                     }
             )
-
             OutlinedTextField(
-                value = username,
-                onValueChange = { newValue -> username = newValue },
+                value = username, onValueChange = { newValue -> username = newValue },
                 label = { Text(text = "Enter Username") },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -101,7 +95,6 @@ class LoginActivity : ComponentActivity() {
                     },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
             )
-
             Button(
                 onClick = {
                     viewModel.loginUser(username.text, getString(R.string.jwt_token))
@@ -116,7 +109,6 @@ class LoginActivity : ComponentActivity() {
             ) {
                 Text(text = "Login as User")
             }
-
             Button(
                 onClick = {
                     viewModel.loginUser(username.text)
@@ -146,21 +138,16 @@ class LoginActivity : ComponentActivity() {
     }
 
     private fun subscribeToEvents() {
-
         lifecycleScope.launchWhenStarted {
-
             viewModel.loginEvent.collect { event ->
-
                 when(event) {
                     is LoginViewModel.LogInEvent.ErrorInputTooShort -> {
                         showToast("Invalid! Enter more than 3 characters.")
                     }
-
                     is LoginViewModel.LogInEvent.ErrorLogIn -> {
                         val errorMessage = event.error
                         showToast("Error: $errorMessage")
                     }
-
                     is LoginViewModel.LogInEvent.Success -> {
                         showToast("Login Successful!")
                         startActivity(Intent(this@LoginActivity, ChannelListActivity::class.java))
